@@ -15,8 +15,9 @@
             border: 1px solid #ccc;
         }
         .flex-box {
-            display: flex;
+            /* display: flex; */
             justify-content: center;
+            text-align: center;
         }
         #judgeButton {
             margin: 10px;
@@ -24,8 +25,8 @@
         #result {
             width: 300px;
             height: 300px;
-            border: 1px solid #ccc;
-            font-size: 200px;
+            /* border: 1px solid #ccc; */
+            font-size: 20px;
             text-align: center;
             line-height: 300px;
         }
@@ -33,6 +34,17 @@
             line-height: 300px;
             margin: 0 20px;
             font-size: 20px;
+        }
+
+        form{
+            line-height: 50px;
+            vertical-align: middle;
+        }
+
+        img{
+            height: 200px;
+            width: 200px;
+            margin: 50px;
         }
     </style>
 </head>
@@ -52,14 +64,23 @@
             <input type="submit" value="send" class="btn">
         </form>
 
-        
-        <div>
-            <p style="text-align:center;margin:0;">▼判定結果▼</p>
-            {% if img_url %}
-            <p><img src="{{ result }}"></p>
-            {% endif %}
-            <!-- <div id="result" class="mdl-card mdl-shadow--2dp"></div> -->
-        </div>
+        {% if result %}
+        <img src="{{ result[2] }}" alt="">
+        {% else %}
+        <p>選択した画像がここに表示されます</p>
+        {% endif %}
+    
+        <!-- <p style="text-align:center;margin:0;">判定結果</p> -->
+        <p>▼判定結果▼</p>
+        {% if result %}
+        <p>{{ result[0] }}</p>
+        {% else %}
+        <p>結果はここに表示されます</p>
+        {% endif %}
+        {% if result %}
+        <p>こちらのお顔は「 {{ result[1] }} 」タイプです。</p>
+        {% endif %}
+        <!-- <div id="result" class="mdl-card mdl-shadow--2dp"></div> -->
     </div>
     <!-- <script type="text/javascript" src="/static/app.js"></script> -->
 </body>

@@ -2,10 +2,10 @@ import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, session
 from werkzeug import secure_filename
-import eval
 import tensorflow as tf
 import multiprocessing as mp
 import numpy as np
+import facetype
 
 app = Flask(__name__)
 
@@ -61,8 +61,8 @@ def send():
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             img_file.save(img_path)
             img_url = '/uploads/' + filename
-            result = eval.evaluation(img_path, '/Users/yuni/facetype_app/model.ckpt')
-            return render_template('index.html', result=result)
+            result = facetype.evaluation(img_path, '/Users/yuni/facetype_app/model.ckpt')
+            return render_template('index.html',result=result)
             
         else:
             return ''' <p>許可されていない拡張子です</p> '''

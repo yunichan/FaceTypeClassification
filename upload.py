@@ -61,7 +61,7 @@ def send():
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             img_file.save(img_path)
             img_url = '/uploads/' + filename
-            result = facetype.evaluation(img_path, '/Users/yuni/facetype_app/model.ckpt')
+            result = facetype.evaluation(img_path, '/Users/yuni/FaceTypeClassification/model.ckpt')
             return render_template('index.html',result=result)
             
         else:

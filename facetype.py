@@ -84,7 +84,7 @@ sess = tf.InteractiveSession()
 
 saver = tf.train.Saver()
 sess.run(tf.global_variables_initializer())
-saver.restore(sess, "/Users/yuni/facetype_app/model.ckpt")
+saver.restore(sess, "/Users/yuni/FaceTypeClassification/model.ckpt")
 
 def evaluation(img_path, ckpt_path):
     tf.reset_default_graph()
@@ -104,7 +104,7 @@ def evaluation(img_path, ckpt_path):
 
     saver = tf.train.Saver()
     sess.run(tf.global_variables_initializer())
-    saver.restore(sess, "/Users/yuni/facetype_app/model.ckpt")
+    saver.restore(sess, "/Users/yuni/FaceTypeClassification/model.ckpt")
 
 
     for i in range(len(test_image)):
